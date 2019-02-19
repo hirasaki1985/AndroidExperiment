@@ -20,6 +20,7 @@ class FriendsFragment : Fragment() {
     private var mContext: Context? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        // set Context.
         mContext = inflater.getContext()
         return inflater.inflate(R.layout.fragment_friends, container, false)
     }
@@ -28,15 +29,14 @@ class FriendsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val recyclerView = view.findViewById<RecyclerView>(R.id.friend_list)
 
-        /*
-        val adapter = FriendsListAdapter(this) { friendlist_row_friend_name ->
-            // タップされた位置にあるタイムゾーンをトースト表示する
-            Toast.makeText(this, friendlist_row_friend_name.displayName, Toast.LENGTH_SHORT).show()
-        }
-        */
+        // create an adapter for use recyclerView.
         val adapter = FriendListAdapter(mContext, createDataList(), object : FriendListAdapter.ListListener {
+            /**
+             * processing when items in the list are tapped.
+             */
             override fun onClickRow(tappedView: View, friendModel: FriendModel) {
-                this.onClickRow(tappedView, friendModel)
+                // this.onClickRow(tappedView, friendModel)
+                Toast.makeText(mContext, friendModel.name, Toast.LENGTH_SHORT).show()
             }
         })
 
@@ -45,6 +45,9 @@ class FriendsFragment : Fragment() {
         recyclerView.adapter = adapter
     }
 
+    /**
+     * Create the data that display in the recycle view.
+     */
     private fun createDataList(): List<FriendModel> {
         val dataList = mutableListOf<FriendModel>()
         for (i in 0..49) {
@@ -54,14 +57,5 @@ class FriendsFragment : Fragment() {
             dataList.add(data)
         }
         return dataList
-    }
-
-
-    fun onClickRow(tappedView: View, friendModel: FriendModel) {
-        Toast.makeText(mContext, friendModel.name, Toast.LENGTH_SHORT).show()
-        /*
-        Snackbar.make(tappedView, "Replace with your own action tapped ${rowModel.name}", Snackbar.LENGTH_LONG)
-            .setAction("Action", null).show()
-        */
     }
 }
