@@ -9,7 +9,7 @@ class MainActivity : AppCompatActivity() {
 
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
-            R.id.nav_timeline -> {
+            R.id.nav_home -> {
                 // message.setText(R.string.nav_title_home)
                 return@OnNavigationItemSelectedListener true
             }
