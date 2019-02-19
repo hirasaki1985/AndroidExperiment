@@ -1,9 +1,9 @@
-package com.example.hirasaki.androidexperiment.friends
+package com.example.hirasaki.androidexperiment.Friends
 
 import android.content.Context
-// import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -15,8 +15,7 @@ import com.example.hirasaki.androidexperiment.Models.FriendModel
 // import java.util.*
 import android.widget.Toast
 
-
-class FriendsFragment : Fragment() {
+class FriendsListFragment : Fragment() {
     private var mContext: Context? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -35,8 +34,32 @@ class FriendsFragment : Fragment() {
              * processing when items in the list are tapped.
              */
             override fun onClickRow(tappedView: View, friendModel: FriendModel) {
-                // this.onClickRow(tappedView, friendModel)
-                Toast.makeText(mContext, friendModel.name, Toast.LENGTH_SHORT).show()
+                // Toast.makeText(mContext, friendModel.name, Toast.LENGTH_SHORT).show()
+                val bundle = Bundle()
+                bundle.putInt("id", friendModel.id)
+
+                val fragment = FriendsDetailFragment()
+                fragment.setArguments(bundle)
+
+                val fragmentManager = getFragmentManager()
+                if(fragmentManager != null) {
+                    val fragmentTransaction = fragmentManager.beginTransaction()
+                    // setting BackStack
+                    fragmentTransaction.addToBackStack(null)
+
+                    // replace display
+                    fragmentTransaction.replace(R.id.frameLayout, fragment)
+                    fragmentTransaction.commit()
+                }
+
+                /*
+                R.id.nav_friends -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, fragment)
+                        .commit()
+                    return@OnNavigationItemSelectedListener true
+                }
+                */
             }
         })
 
@@ -52,6 +75,7 @@ class FriendsFragment : Fragment() {
         val dataList = mutableListOf<FriendModel>()
         for (i in 0..49) {
             val data: FriendModel = FriendModel().also {
+                it.id = i
                 it.name = "タイトル" + i + "だよ"
             }
             dataList.add(data)

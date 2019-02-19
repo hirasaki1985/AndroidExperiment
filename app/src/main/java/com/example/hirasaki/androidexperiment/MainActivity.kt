@@ -3,10 +3,9 @@ package com.example.hirasaki.androidexperiment
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
-import android.support.v7.widget.RecyclerView
-import com.example.hirasaki.androidexperiment.friends.FriendsFragment
-import com.example.hirasaki.androidexperiment.home.HomeFragment
-import com.example.hirasaki.androidexperiment.profile.ProfileFragment
+import com.example.hirasaki.androidexperiment.Friends.FriendsListFragment
+import com.example.hirasaki.androidexperiment.Home.HomeFragment
+import com.example.hirasaki.androidexperiment.Profile.ProfileFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -21,7 +20,7 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.nav_friends -> {
                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.frameLayout, FriendsFragment())
+                    .replace(R.id.frameLayout, FriendsListFragment())
                     .commit()
                 return@OnNavigationItemSelectedListener true
             }

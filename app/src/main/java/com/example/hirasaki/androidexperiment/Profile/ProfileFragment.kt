@@ -1,4 +1,4 @@
-package com.example.hirasaki.androidexperiment.profile
+package com.example.hirasaki.androidexperiment.Profile
 
 import android.os.Bundle
 import android.support.v4.app.Fragment

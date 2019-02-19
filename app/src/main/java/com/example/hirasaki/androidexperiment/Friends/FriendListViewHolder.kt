@@ -1,4 +1,4 @@
-package com.example.hirasaki.androidexperiment.friends
+package com.example.hirasaki.androidexperiment.Friends
 
 import android.support.v7.widget.RecyclerView
 import android.view.View
