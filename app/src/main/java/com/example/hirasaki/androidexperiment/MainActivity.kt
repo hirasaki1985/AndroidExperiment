@@ -10,6 +10,28 @@ class MainActivity : AppCompatActivity() {
     private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
         when (item.itemId) {
             R.id.nav_home -> {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.frameLayout, HomeFragment())
+                    .commit()
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.nav_friends -> {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.frameLayout, FriendsFragment())
+                    .commit()
+                return@OnNavigationItemSelectedListener true
+            }
+            R.id.nav_profile -> {
+                supportFragmentManager.beginTransaction()
+                    .replace(R.id.frameLayout, ProfileFragment())
+                    .commit()
+                return@OnNavigationItemSelectedListener true
+            }
+        }
+        false
+        /*
+        when (item.itemId) {
+            R.id.nav_home -> {
                 // message.setText(R.string.nav_title_home)
                 return@OnNavigationItemSelectedListener true
             }
@@ -23,6 +45,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
         false
+        */
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,5 +53,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+
+        // Initial display
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.frameLayout, HomeFragment())
+            .commit()
     }
 }
