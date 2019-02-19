@@ -20,13 +20,15 @@ android {
             // java.srcDirs   = ['/src/main/java', '.apt_generated']
             // aidl.srcDirs   = ['/src/main/aidl', '.apt_generated']
             // assets.srcDirs = ['/src/main/assets']
+            /*
             res.srcDirs = [
-                    'src/main/res/layouts/friends',
-                    'src/main/res/layouts/home',
-                    'src/main/res/layouts/profile',
-                    'src/main/res/layouts',
+                    // 'src/main/res/layout/friends/layout',
+                    // 'src/main/res/layout/home/layout',
+                    // 'src/main/res/layout/profile/layout',
+                    'src/main/res/layout',
                     'src/main/res'
             ]
+            */
         }
     }
     buildTypes {

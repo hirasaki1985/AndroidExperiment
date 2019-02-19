@@ -1,10 +1,11 @@
-package com.example.hirasaki.androidexperiment
+package com.example.hirasaki.androidexperiment.profile
 
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.hirasaki.androidexperiment.R
 
 class ProfileFragment : Fragment() {
 
