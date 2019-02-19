@@ -3,6 +3,7 @@ package com.example.hirasaki.androidexperiment
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.RecyclerView
 import com.example.hirasaki.androidexperiment.friends.FriendsFragment
 import com.example.hirasaki.androidexperiment.home.HomeFragment
 import com.example.hirasaki.androidexperiment.profile.ProfileFragment
