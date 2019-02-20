@@ -40,7 +40,7 @@ class FriendsDetailFragment : Fragment() {
             id = args.getInt("id")
         }
 
-        return inflater.inflate(R.layout.fragment_friends_detail, container, false)
+        return inflater.inflate(R.layout.friends_detail, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

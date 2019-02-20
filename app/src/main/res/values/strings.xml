@@ -5,4 +5,13 @@
     <string name="nav_title_profile">Profile</string>
     <string name="friendlist_row_friend_name">TextView</string>
     <string name="friends_detail_id">TextView</string>
+    <string name="friend_input_name_label">お名前</string>
+    <string name="friend_input_name">Name</string>
+    <string name="friend_list_add_button">追加</string>
+    <string name="friend_input_sex_label">性別</string>
+    <string name="friend_input_sex_man">男性</string>
+    <string name="friend_input_sex_woman">女性</string>
+    <string name="friend_input_birthday_label">誕生日</string>
+    <string name="friend_input_profile_label">プロフィール</string>
+    <string name="friend_input_button_label">追加</string>
 </resources>

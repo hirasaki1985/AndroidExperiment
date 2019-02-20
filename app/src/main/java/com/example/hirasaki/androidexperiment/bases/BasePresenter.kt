@@ -15,8 +15,5 @@ package com.example.hirasaki.androidexperiment.bases
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-interface BasePresenter {
-
-    fun start()
-
+open class BasePresenter {
 }

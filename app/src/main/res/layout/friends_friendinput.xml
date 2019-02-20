@@ -1,6 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                                             android:layout_width="match_parent"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
                                              android:layout_height="match_parent">
+    <ScrollView
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".MainActivity" android:id="@+id/friend_input_scroll"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent">
+        <android.support.constraint.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="0dp" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="0dp" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginEnd="0dp"
+                app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="0dp">
 
+            <TextView
+                    android:text="@string/friend_input_name_label"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/friend_input_name_label"
+                    app:layout_constraintStart_toStartOf="parent"
+                    android:layout_marginStart="8dp" app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="8dp" app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" android:layout_height="wrap_content"
+                    app:layout_constraintHorizontal_bias="0.026" app:layout_constraintVertical_bias="0.017"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    android:labelFor="@+id/friend_input_name"/>
+            <TextView
+                    android:text="@string/friend_input_sex_label"
+                    android:layout_width="wrap_content"
+                    android:id="@+id/friend_input_sex_label"
+                    app:layout_constraintStart_toStartOf="@+id/friend_input_name_label"
+                    android:layout_marginTop="8dp" app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" android:layout_height="wrap_content"
+                    app:layout_constraintHorizontal_bias="0.0" app:layout_constraintVertical_bias="0.0"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:layout_constraintTop_toBottomOf="@+id/friend_input_name"/>
+            <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textPersonName"
+                    android:text="@string/friend_input_name"
+                    android:ems="10"
+                    android:id="@+id/friend_input_name"
+                    app:layout_constraintStart_toEndOf="@+id/friend_input_name_label" android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/friend_input_name_label"
+                    android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent" android:autofillHints=""
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:layout_constraintHorizontal_bias="0.36"/>
+            <RadioGroup
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/friend_input_sex_group"
+                    android:orientation="horizontal" app:layout_constraintTop_toBottomOf="@+id/friend_input_sex_label"
+                    app:layout_constraintStart_toStartOf="@+id/friend_input_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="8dp" android:layout_marginTop="8dp">
+
+                <RadioButton
+                        android:text="@string/friend_input_sex_man"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/friend_input_sex_man"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium" android:tag="0"/>
+                <RadioButton
+                        android:text="@string/friend_input_sex_woman"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/friend_input_sex_woman"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium" android:tag="1"/>
+            </RadioGroup>
+            <TextView
+                    android:text="@string/friend_input_birthday_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/friend_input_birthday_label"
+                    app:layout_constraintStart_toStartOf="@+id/friend_input_sex_label"
+                    android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/friend_input_sex_group"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+
+            <DatePicker
+                    android:id="@+id/friend_input_birthday"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:datePickerMode="spinner"
+                    app:layout_constraintTop_toBottomOf="@+id/friend_input_birthday_label"
+                    app:layout_constraintStart_toStartOf="@+id/friend_input_sex_group"
+                    app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintVertical_bias="0.0"/>
+            <TextView
+                    android:text="@string/friend_input_profile_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/friend_input_profile_label"
+                    app:layout_constraintTop_toBottomOf="@+id/friend_input_birthday"
+                    app:layout_constraintStart_toStartOf="@+id/friend_input_birthday_label"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    tools:labelFor="@+id/friend_input_profile"/>
+            <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:ems="10"
+                    android:id="@+id/friend_input_profile" app:layout_constraintTop_toBottomOf="@+id/friend_input_profile_label"
+                    app:layout_constraintStart_toStartOf="@+id/friend_input_birthday"
+                    app:layout_constraintEnd_toEndOf="parent" android:autofillHints=""/>
+            <Button
+                    android:text="@string/friend_input_button_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/friend_input_button"
+                    app:layout_constraintTop_toBottomOf="@+id/friend_input_profile"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginEnd="8dp"/>
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
 </android.support.constraint.ConstraintLayout>

@@ -8,14 +8,18 @@ import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import com.example.hirasaki.androidexperiment.R
 // import android.widget.Toast
 // import java.util.*
 import com.example.hirasaki.androidexperiment.friends.data.FriendDetail.FriendsDetailFragment
 import com.example.hirasaki.androidexperiment.friends.data.FriendModel
+import com.example.hirasaki.androidexperiment.friends.friendinput.FriendsInputFragment
+import com.example.hirasaki.androidexperiment.friends.utils.FriendPresenter
 
 class FriendsListFragment : Fragment() {
     private var mContext: Context? = null
+    private var presenter: FriendPresenter = FriendPresenter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // set Context.
@@ -27,10 +31,31 @@ class FriendsListFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val recyclerView = view.findViewById<RecyclerView>(R.id.friend_list)
 
+        // tap add button.
+        val addButton = view.findViewById<Button>(R.id.friend_list_add_button)
+
+        /**
+         * processing when tap add button.
+         */
+        addButton.setOnClickListener {
+            val fragment = FriendsInputFragment()
+            val fragmentManager = getFragmentManager()
+
+            if (fragmentManager != null) {
+                val fragmentTransaction = fragmentManager.beginTransaction()
+                // setting BackStack
+                fragmentTransaction.addToBackStack(null)
+
+                // replace display
+                fragmentTransaction.replace(R.id.frameLayout, fragment)
+                fragmentTransaction.commit()
+            }
+        }
+
         // create an adapter for use recyclerView.
         val adapter = FriendListAdapter(
             mContext,
-            createDataList(),
+            presenter.getFriendList(),
             object : FriendListAdapter.ListListener {
                 /**
                  * processing when items in the list are tapped.
@@ -68,21 +93,5 @@ class FriendsListFragment : Fragment() {
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(activity)
         recyclerView.adapter = adapter
-    }
-
-    /**
-     * Create the data that display in the recycle view.
-     */
-    private fun createDataList(): List<FriendModel> {
-        val dataList = mutableListOf<FriendModel>()
-        for (i in 0..49) {
-            val data: FriendModel = FriendModel()
-                .also {
-                it.id = i
-                it.name = "タイトル" + i + "だよ"
-            }
-            dataList.add(data)
-        }
-        return dataList
     }
 }
