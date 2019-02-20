@@ -19,4 +19,16 @@ class FriendPresenter: BasePresenter() {
         }
         return dataList
     }
+
+    public fun save(model: FriendModel): Boolean {
+        return true
+    }
+
+    public fun update(target: Int, model: FriendModel): Boolean {
+        return true
+    }
+
+    public fun delete(target: Int): Boolean {
+        return true
+    }
 }

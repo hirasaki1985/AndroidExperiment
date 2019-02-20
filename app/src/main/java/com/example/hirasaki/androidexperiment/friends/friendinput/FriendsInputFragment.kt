@@ -67,6 +67,8 @@ class FriendsInputFragment: Fragment() {
             // has errors
             if (validate_result.size > 0) {
                 Log.d("FriendsInputFragment", "has errors.")
+
+                // show error messages
                 for (error in validate_result) {
                     when (error.target) {
                         "name"      -> name.error = error.message
