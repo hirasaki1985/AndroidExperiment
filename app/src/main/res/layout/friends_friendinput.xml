@@ -84,31 +84,33 @@
                     app:layout_constraintTop_toBottomOf="@+id/friend_input_sex_group"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
 
-            <DatePicker
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="45dp"
+                    android:text="@string/friend_input_birthday"
                     android:id="@+id/friend_input_birthday"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:datePickerMode="spinner"
                     app:layout_constraintTop_toBottomOf="@+id/friend_input_birthday_label"
                     app:layout_constraintStart_toStartOf="@+id/friend_input_sex_group"
-                    app:layout_constraintEnd_toEndOf="parent" app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintVertical_bias="0.0"/>
+                    android:layout_marginStart="8dp"/>
             <TextView
                     android:text="@string/friend_input_profile_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" android:id="@+id/friend_input_profile_label"
-                    app:layout_constraintTop_toBottomOf="@+id/friend_input_birthday"
                     app:layout_constraintStart_toStartOf="@+id/friend_input_birthday_label"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                    tools:labelFor="@+id/friend_input_profile"/>
+                    tools:labelFor="@+id/friend_input_profile"
+                    android:layout_marginTop="16dp"
+                    app:layout_constraintTop_toBottomOf="@+id/friend_input_birthday_view"/>
             <EditText
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:inputType="textMultiLine"
                     android:ems="10"
-                    android:id="@+id/friend_input_profile" app:layout_constraintTop_toBottomOf="@+id/friend_input_profile_label"
+                    android:id="@+id/friend_input_profile"
+                    app:layout_constraintTop_toBottomOf="@+id/friend_input_profile_label"
                     app:layout_constraintStart_toStartOf="@+id/friend_input_birthday"
-                    app:layout_constraintEnd_toEndOf="parent" android:autofillHints=""/>
+                    app:layout_constraintEnd_toEndOf="parent" android:autofillHints=""
+            />
             <Button
                     android:text="@string/friend_input_button_label"
                     android:layout_width="wrap_content"
@@ -117,6 +119,15 @@
                     app:layout_constraintTop_toBottomOf="@+id/friend_input_profile"
                     app:layout_constraintEnd_toEndOf="parent"
                     android:layout_marginEnd="8dp"/>
+            <TextView
+                    android:text="@string/friend_list_birtyday_view"
+                    android:layout_width="0dp"
+                    android:layout_height="25dp"
+                    android:id="@+id/friend_input_birthday_view"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                    app:layout_constraintStart_toStartOf="@+id/friend_input_birthday"
+                    android:layout_marginStart="16dp" android:layout_marginTop="8dp"
+                    app:layout_constraintTop_toBottomOf="@+id/friend_input_birthday"/>
         </android.support.constraint.ConstraintLayout>
     </ScrollView>
 </android.support.constraint.ConstraintLayout>
