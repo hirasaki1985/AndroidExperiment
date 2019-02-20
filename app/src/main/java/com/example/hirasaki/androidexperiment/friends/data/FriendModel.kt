@@ -1,4 +1,4 @@
-package com.example.hirasaki.androidexperiment.Models
+package com.example.hirasaki.androidexperiment.friends.data
 
 class FriendModel {
     var id: Int = 0

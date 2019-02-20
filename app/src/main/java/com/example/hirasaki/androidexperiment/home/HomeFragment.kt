@@ -1,4 +1,4 @@
-package com.example.hirasaki.androidexperiment.Home
+package com.example.hirasaki.androidexperiment.home
 
 import android.os.Bundle
 import android.support.v4.app.Fragment

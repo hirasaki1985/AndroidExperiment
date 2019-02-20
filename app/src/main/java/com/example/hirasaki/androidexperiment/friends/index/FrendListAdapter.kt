@@ -1,4 +1,4 @@
-package com.example.hirasaki.androidexperiment.Friends
+package com.example.hirasaki.androidexperiment.friends.index
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
@@ -7,15 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import com.example.hirasaki.androidexperiment.R
 import android.util.Log
-import com.example.hirasaki.androidexperiment.Models.FriendModel
+import com.example.hirasaki.androidexperiment.friends.data.FriendModel
 
 /**
  * an Adapter for use the FriendList.
  */
 class FriendListAdapter(
-        context: Context?,
-        private val list: List<FriendModel>,
-        private val listener: ListListener)
+    context: Context?,
+    private val list: List<FriendModel>,
+    private val listener: ListListener
+)
         : RecyclerView.Adapter<FriendListViewHolder>() {
 
     private val inflater = LayoutInflater.from(context)
