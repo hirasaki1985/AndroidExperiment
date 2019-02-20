@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.example.hirasaki.androidexperiment.R
+import com.example.hirasaki.androidexperiment.friends.data.FriendModel
 import com.example.hirasaki.androidexperiment.friends.utils.FriendPresenter
 import com.example.hirasaki.androidexperiment.friends.utils.FriendValidator
 // import com.example.hirasaki.androidexperiment.util.DatePickerFragmentDialog
@@ -29,6 +30,11 @@ class FriendsInputFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // date picker
+        val dateButton = view.findViewById<Button>(R.id.friend_input_birthday)
+        var cal = Calendar.getInstance()
+        val birthday_view = view.findViewById<TextView>(R.id.friend_input_birthday_view)
+
         // tap add button.
         val addButton = view.findViewById<Button>(R.id.friend_input_button)
 
@@ -36,29 +42,45 @@ class FriendsInputFragment: Fragment() {
          * processing when tap add button.
          */
         addButton.setOnClickListener {
-            var isValid = true
-
-            val id = 0
+            // get parameters
+            val id:Int = 0
             val name = view.findViewById<EditText>(R.id.friend_input_name)
-            val sex = view.findViewById<RadioButton>(R.id.friend_input_sex_group)
-            val birthday = view.findViewById<DatePicker>(R.id.friend_input_birthday)
+            val sex = view.findViewById<RadioGroup>(R.id.friend_input_sex_group)
+            val sex_man = view.findViewById<RadioButton>(R.id.friend_input_sex_man)
+            val birthday = view.findViewById<TextView>(R.id.friend_input_birthday_view)
             val profile = view.findViewById<EditText>(R.id.friend_input_profile)
+            // val birth: Date = Date(birthday.text.toString())
+            val selected_sex = sex.getCheckedRadioButtonId()
 
-            /*
+            // create model
             val friendModel = FriendModel(
                 id,
                 name.text.toString(),
-                sex.getTag().toString().toBoolean(),
-                ,
+                selected_sex.toString().toBoolean(),
+                cal.getTime(),
                 profile.text.toString()
             )
-            */
-        }
 
-        // date picker
-        val dateButton = view.findViewById<Button>(R.id.friend_input_birthday)
-        var cal = Calendar.getInstance()
-        val birthday_view = view.findViewById<TextView>(R.id.friend_input_birthday_view)
+            // validate
+            val validate_result = validator.validate(friendModel)
+
+            // has errors
+            if (validate_result.size > 0) {
+                Log.d("FriendsInputFragment", "has errors.")
+                for (error in validate_result) {
+                    when (error.target) {
+                        "name"      -> name.error = error.message
+                        "sex"       -> sex_man.error = error.message
+                        "birthday"  -> birthday.error = error.message
+                        "profile"   -> profile.error = error.message
+                    }
+                }
+                return@setOnClickListener
+            }
+
+            // add
+            Log.d("FriendsInputFragment", "error is nothing.")
+        }
 
         val dateSetListener = object : DatePickerDialog.OnDateSetListener {
             override fun onDateSet(view: DatePicker, year: Int, monthOfYear: Int,

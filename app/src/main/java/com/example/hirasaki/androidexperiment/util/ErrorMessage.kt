@@ -1,6 +1,6 @@
 package com.example.hirasaki.androidexperiment.util
 
-class ErrorMessage {
-    var target: String = ""
-    var message: String = ""
+class ErrorMessage(_target: String, _message: String) {
+    var target: String = _target
+    var message: String = _message
 }

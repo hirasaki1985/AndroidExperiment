@@ -6,10 +6,15 @@ open class BaseValidator: BaseValidatorInterface {
     private var result: Array<ErrorMessage>
 
     constructor() {
-        result = listOf<ErrorMessage>().toTypedArray()
+        result = mutableListOf<ErrorMessage>().toTypedArray()
     }
 
-    override fun run(model: BaseModel) {
+    override fun validate(model: BaseModel): Array<ErrorMessage> {
+        return result
+    }
+
+    override fun setResult(_result: Array<ErrorMessage>) {
+        result = _result
     }
 
     override fun getResult(): Array<ErrorMessage> {
@@ -17,13 +22,14 @@ open class BaseValidator: BaseValidatorInterface {
     }
 
     override fun execute(model: BaseModel): Array<ErrorMessage> {
-        run(model)
+        setResult(validate(model))
         return getResult()
     }
 }
 
 interface BaseValidatorInterface {
-    fun run(model: BaseModel)
+    fun validate(model: BaseModel): Array<ErrorMessage>
+    fun setResult(_result: Array<ErrorMessage>)
     fun getResult(): Array<ErrorMessage>
     fun execute(model: BaseModel): Array<ErrorMessage>
 }
