@@ -13,6 +13,7 @@ class FriendsFriendListLoader(context: Context): AsyncTaskLoader<FriendModel>(co
 
     override fun loadInBackground(): FriendModel? {
         // HTTPでRSSのXMLを取得する
+        /*
         val response = remoteDataSource.getFriendList()
 
         if (response != null) {
@@ -21,6 +22,7 @@ class FriendsFriendListLoader(context: Context): AsyncTaskLoader<FriendModel>(co
             // return friendModel.parse(response)
             return friendModel
         }
+        */
 
         return null
     }
