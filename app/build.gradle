@@ -33,16 +33,16 @@ android {
     }
     buildTypes {
         debug {
-            buildConfigField "String", 'BASE_URL', "https://script.google.com/macros/s/AKfycbzLNFOuKp4DLbrfN0zlNAV0EyvnC1F_XZQGrVu-u7-fgIhUZ3x1/exec"
-            buildConfigField "String", 'API_KEY', "tGendC3d2CMEOvsiH6UVstknFc31RM"
+            buildConfigField "String", 'BASE_ENDPOINT', "\"https://script.google.com/macros/s/AKfycbzLNFOuKp4DLbrfN0zlNAV0EyvnC1F_XZQGrVu-u7-fgIhUZ3x1/exec\""
+            buildConfigField "String", 'API_KEY', "\"tGendC3d2CMEOvsiH6UVstknFc31RM\""
         }
         staging {
-            buildConfigField "String", 'BASE_URL', "https://stg-api.secretsite.com"
-            buildConfigField "String", 'API_KEY', "wfefijFEOI9NFEK#KEFKL#IU)F"
+            buildConfigField "String", 'BASE_ENDPOINT', "\"https://stg-api.secretsite.com\""
+            buildConfigField "String", 'API_KEY', "\"wfefijFEOI9NFEK#KEFKL#IU)F\""
         }
         release {
-            buildConfigField "String", 'BASE_URL', "https://production-api.secretsite.com"
-            buildConfigField "String", 'API_KEY', "QjjtzGVqWnTfxUFPvIDYiePFn0y1EC"
+            buildConfigField "String", 'BASE_ENDPOINT', "\"https://production-api.secretsite.com\""
+            buildConfigField "String", 'API_KEY', "\"QjjtzGVqWnTfxUFPvIDYiePFn0y1EC\""
 
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -60,4 +60,10 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+
+    implementation 'com.squareup.okhttp3:okhttp:3.11.0'  //http通信ライブラリ
+    implementation 'com.eclipsesource.minimal-json:minimal-json:0.9.5' //jsonパースライブラリ
+    def coroutines_version = '1.1.1' //kotlinコルーチン用ライブラリ(async, await)のバージョン
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version" //kotlinコルーチン用ライブラリ(async, await)
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version" //kotlinコルーチン用ライブラリ(async, await)
 }

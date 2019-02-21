@@ -1,10 +1,69 @@
 package com.example.hirasaki.androidexperiment.util
 
+import android.util.Log
+import okhttp3.*
 import java.io.BufferedInputStream
 import java.io.InputStream
 import java.net.URL
 import javax.net.ssl.HttpsURLConnection
+import org.json.JSONObject
 
+class Http {
+    //叩きたいREST APIのURLを引数とします
+    fun httpGET1(url : String, params: JSONObject): String? {
+        Log.d("httpGET1", "start")
+        Log.d("httpGET1 url = ", url)
+        Log.d("httpGET1 params = ", params.toString())
+
+        // params
+        // val postBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), params.toString())
+        val uri = convertJsonToParams(params)
+        val request_url = url + '?' + uri
+        Log.d("httpGET1 request_url", request_url)
+
+        // create client instance
+        val client = OkHttpClient()
+
+        // create request
+        // val request: Request = Request.Builder().url(request_url).get(postBody).build()
+        val request: Request = Request.Builder().url(request_url).get().build()
+
+        // execute
+        val response = client.newCall(request).execute()
+        /*
+        val request = Request.Builder()
+            // .header("Authorization", "your token")
+            .url(url)
+            .build()
+
+        val response = client.newCall(request).execute()
+        */
+        return response.body()?.string()
+    }
+
+    private fun convertJsonToParams(json: JSONObject): String {
+        Log.d("httpGET1 convertJsonToParams()", "start")
+        var result = ""
+        val keys: Iterator<String> = json.keys()
+
+        while (keys.hasNext()) {
+            val key = keys.next()
+            val value = json.get(key)
+            result = "$result$key=$value"
+
+            if (value is JSONObject) {
+                // result += key + "=" + json.get(key)
+            }
+
+            if (keys.hasNext()) {
+                result += "&"
+            }
+        }
+        return result
+    }
+}
+
+/*
 fun httpGet(url: String): InputStream? {
 
     // 通信接続用のオブジェクトを作る
@@ -30,3 +89,4 @@ fun httpGet(url: String): InputStream? {
     // 失敗
     return null
 }
+*/

@@ -5,9 +5,8 @@ import android.content.AsyncTaskLoader
 import com.example.hirasaki.androidexperiment.configs.WebAPI
 import com.example.hirasaki.androidexperiment.friends.data.FriendModel
 import com.example.hirasaki.androidexperiment.friends.data.remote.FriendsRemoteDataSource
-import com.example.hirasaki.androidexperiment.util.*
 
-class FriendsLoader(context: Context): AsyncTaskLoader<FriendModel>(context) {
+class FriendsFriendListLoader(context: Context): AsyncTaskLoader<FriendModel>(context) {
     private var cache: FriendModel? = null
     private var webAPI = WebAPI()
     private var remoteDataSource = FriendsRemoteDataSource()

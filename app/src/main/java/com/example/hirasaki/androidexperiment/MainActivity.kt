@@ -2,12 +2,10 @@ package com.example.hirasaki.androidexperiment
 
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
-import android.support.v4.app.LoaderManager
-import android.support.v4.content.Loader
 import android.support.v7.app.AppCompatActivity
 import com.example.hirasaki.androidexperiment.friends.data.FriendModel
 import com.example.hirasaki.androidexperiment.friends.index.FriendsListFragment
-import com.example.hirasaki.androidexperiment.friends.loader.FriendsLoader
+// import com.example.hirasaki.androidexperiment.friends.loader.FriendsLoader
 import com.example.hirasaki.androidexperiment.home.HomeFragment
 import com.example.hirasaki.androidexperiment.profile.ProfileFragment
 import kotlinx.android.synthetic.main.activity_main.*
@@ -59,7 +57,7 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.frameLayout, HomeFragment())
             .commit()
     }
-    
+
     /*
     private val callback: LoaderManager.LoaderCallbacks<String> = object : LoaderManager.LoaderCallbacks<String> {
         override fun onCreateLoader(id: Int, args: Bundle?) : Loader<String> {
