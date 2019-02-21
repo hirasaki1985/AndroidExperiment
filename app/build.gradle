@@ -32,7 +32,18 @@ android {
         }
     }
     buildTypes {
+        debug {
+            buildConfigField "String", 'BASE_URL', "https://script.google.com/macros/s/AKfycbzLNFOuKp4DLbrfN0zlNAV0EyvnC1F_XZQGrVu-u7-fgIhUZ3x1/exec"
+            buildConfigField "String", 'API_KEY', "tGendC3d2CMEOvsiH6UVstknFc31RM"
+        }
+        staging {
+            buildConfigField "String", 'BASE_URL', "https://stg-api.secretsite.com"
+            buildConfigField "String", 'API_KEY', "wfefijFEOI9NFEK#KEFKL#IU)F"
+        }
         release {
+            buildConfigField "String", 'BASE_URL', "https://production-api.secretsite.com"
+            buildConfigField "String", 'API_KEY', "QjjtzGVqWnTfxUFPvIDYiePFn0y1EC"
+
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }

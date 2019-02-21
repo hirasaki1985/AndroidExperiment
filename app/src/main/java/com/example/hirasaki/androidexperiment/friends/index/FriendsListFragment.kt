@@ -17,7 +17,7 @@ import com.example.hirasaki.androidexperiment.friends.data.FriendModel
 import com.example.hirasaki.androidexperiment.friends.friendinput.FriendsInputFragment
 import com.example.hirasaki.androidexperiment.friends.utils.FriendPresenter
 
-class FriendsListFragment : Fragment() {
+class FriendsListFragment : Fragment()  {
     private var mContext: Context? = null
     private var presenter: FriendPresenter = FriendPresenter()
 
