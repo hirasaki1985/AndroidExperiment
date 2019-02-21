@@ -82,6 +82,7 @@ class FriendsInputFragment: Fragment() {
 
             // add
             Log.d("FriendsInputFragment", "error is nothing.")
+
         }
 
         val dateSetListener = object : DatePickerDialog.OnDateSetListener {

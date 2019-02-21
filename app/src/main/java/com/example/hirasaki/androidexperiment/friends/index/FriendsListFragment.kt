@@ -139,7 +139,7 @@ class FriendsListFragment : Fragment()  {
             var friendList = ConverJsonDataToArray(JSONObject(result.toString()))
             reloadFriendList(friendList)
             // val textView = findViewById(R.id.text) as TextView
-            // textView.setText(result.get("description").asObject().get("text").asString())
+            // tex
         }
     }
 
