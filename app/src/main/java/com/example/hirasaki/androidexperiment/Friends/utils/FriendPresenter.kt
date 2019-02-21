@@ -4,6 +4,7 @@ import android.util.Log
 import com.eclipsesource.json.Json
 import com.example.hirasaki.androidexperiment.bases.BasePresenter
 import com.example.hirasaki.androidexperiment.friends.data.FriendModel
+import com.example.hirasaki.androidexperiment.friends.data.FriendRepository
 import com.example.hirasaki.androidexperiment.util.Http
 import kotlinx.coroutines.*
 import org.json.JSONArray
@@ -11,6 +12,7 @@ import org.json.JSONObject
 import java.util.*
 
 class FriendPresenter: BasePresenter() {
+    private val friendRepository: FriendRepository = FriendRepository()
     /**
      * Create the data that display in the recycle view.
      */
@@ -27,6 +29,9 @@ class FriendPresenter: BasePresenter() {
         return dataList
     }
 
+    fun getFriendList() = launchSilent(uiContext) {
+        val result = friendRepository.getFriendList()
+    }
     /*
     // fun getFriendList(): List<FriendModel> {
     fun getFriendList(): Deferred<List<FriendModel>> = async(CommonPool) {

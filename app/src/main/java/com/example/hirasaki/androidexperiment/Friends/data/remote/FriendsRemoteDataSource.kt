@@ -1,5 +1,6 @@
 package com.example.hirasaki.androidexperiment.friends.data.remote
 
+import com.example.hirasaki.androidexperiment.bases.data.AsyncResult
 import com.example.hirasaki.androidexperiment.bases.data.remote.BaseRemoteDataSource
 import com.example.hirasaki.androidexperiment.friends.data.FriendModel
 import kotlinx.coroutines.*
@@ -8,11 +9,11 @@ class FriendsRemoteDataSource(): BaseRemoteDataSource() {
     // suspend fun getFriendList(): Deferred<List<FriendModel>> = async {
     // fun getFriendList(): List<FriendModel> = async {
 
-    suspend fun getStateFriendList(): List<FriendModel> {
+    suspend fun getFriendList(): AsyncResult<List<FriendModel>> {
     // suspend fun getFriendList(): Deferred<List<FriendModel>> {
         val friendList = mutableListOf<FriendModel>()
 
-        return friendList.toList()
+        return AsyncResult.Success(friendList.toList())
     }
 
     /*

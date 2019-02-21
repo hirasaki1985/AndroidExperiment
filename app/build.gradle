@@ -69,10 +69,9 @@ dependencies {
     // implementation "org.jetbrains.anko:anko-commons:0.10.1"
 }
 
-/*
-experimental {
-    coroutines "enable"
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
 }
-*/
-
 
