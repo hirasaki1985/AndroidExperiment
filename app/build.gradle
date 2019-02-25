@@ -66,4 +66,12 @@ dependencies {
     def coroutines_version = '1.1.1' //kotlinコルーチン用ライブラリ(async, await)のバージョン
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version" //kotlinコルーチン用ライブラリ(async, await)
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version" //kotlinコルーチン用ライブラリ(async, await)
+    // implementation "org.jetbrains.anko:anko-commons:0.10.1"
 }
+
+kotlin {
+    experimental {
+        coroutines "enable"
+    }
+}
+
