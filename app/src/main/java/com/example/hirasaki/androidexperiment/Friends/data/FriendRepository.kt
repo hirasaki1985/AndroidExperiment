@@ -2,7 +2,7 @@ package com.example.hirasaki.androidexperiment.friends.data
 
 import android.util.Log
 import com.example.hirasaki.androidexperiment.bases.BaseRepository
-import com.example.hirasaki.androidexperiment.bases.data.AsyncResult
+// import com.example.hirasaki.androidexperiment.bases.data.AsyncResult
 import com.example.hirasaki.androidexperiment.friends.data.remote.FriendsRemoteDataSource
 import java.util.*
 
@@ -12,7 +12,7 @@ class FriendRepository: BaseRepository() {
     var cacheIsDirty = false
 
     // val tasksLocalDataSource: TasksDataSource
-
+    /*
     suspend fun getFriendList(): AsyncResult<List<FriendModel>> {
         return getFriendListFromRemoteDataSource()
 
@@ -40,7 +40,9 @@ class FriendRepository: BaseRepository() {
         }
         */
     }
+    */
 
+    /*
     private suspend fun getFriendListFromRemoteDataSource(): AsyncResult<List<FriendModel>> {
         val result = friendRemoteDataSource.getFriendList()
         return when (result) {
@@ -55,6 +57,6 @@ class FriendRepository: BaseRepository() {
             }
             // is AsyncResult.Error -> AsyncResult.Error(RemoteDataNotFoundException())
         }
-
     }
+    */
 }

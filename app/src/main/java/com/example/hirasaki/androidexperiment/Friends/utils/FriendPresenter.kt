@@ -29,9 +29,11 @@ class FriendPresenter: BasePresenter() {
         return dataList
     }
 
+    /*
     fun getFriendList() = launchSilent(uiContext) {
         val result = friendRepository.getFriendList()
     }
+    */
     /*
     // fun getFriendList(): List<FriendModel> {
     fun getFriendList(): Deferred<List<FriendModel>> = async(CommonPool) {
