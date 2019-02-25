@@ -116,80 +116,16 @@ class FriendsListFragment : Fragment()  {
     //非同期処理でHTTP GETを実行します。
     fun onParallelGetButtonClick() = GlobalScope.launch(Dispatchers.Main) {
         Log.d("FriendsListFragment onParallelGetButtonClick()", "start")
-        val http = Http()
         //Mainスレッドでネットワーク関連処理を実行するとエラーになるためBackgroundで実行
         async(Dispatchers.Default) {
+
+            // get FriendList
             val params = JSONObject()
-            params.put("module", "friends")
-            params.put("action", "list")
-            params.put("key", "tGendC3d2CMEOvsiH6UVstknFc31RM")
-
-            http.httpGET1(
-                "https://script.google.com/macros/s/AKfycbzLNFOuKp4DLbrfN0zlNAV0EyvnC1F_XZQGrVu-u7-fgIhUZ3x1/exec",
-                params
-            ) }.await().let {
-
-            //minimal-jsonを使って　jsonをパース
-            val result = Json.parse(it).asObject()
-            Log.d("FriendsListFragment onParallelGetButtonClick()", result.toString())
-
-            var friendList = ConverJsonDataToArray(JSONObject(result.toString()))
-            reloadFriendList(friendList)
-            // val textView = findViewById(R.id.text) as TextView
-            // textView.setText(result.get("description").asObject().get("text").asString())
+            presenter.getFriendList(params)
+        }.await().let {
+            // load FriendList
+            reloadFriendList(it)
         }
-    }
-
-    fun ConverJsonDataToArray(json: JSONObject): List<FriendModel> {
-        val friendList = mutableListOf<FriendModel>()
-
-        val keys: Iterator<String> = json.keys()
-        Log.d("FriendsListFragment ConverJsonDataToArray()", "start")
-        Log.d("keys = ", keys.toString())
-        val datas = json.get("data")
-
-        Log.d("datas = ", datas.toString())
-
-        if (datas is JSONArray) {
-            for (i in 0 until datas.length()) {
-                Log.d("JSONArray", i.toString())
-                Log.d("value", datas[i].toString())
-                val item = datas[i]
-
-                if (item is JSONObject) {
-                    val model = FriendModel(
-                        item.getInt("id"),
-                        item.get("name").toString(),
-                        item.get("sex").toString().toBoolean(),
-                        Date(item.get("birthday").toString()),
-                        item.get("profile").toString()
-                    )
-                    friendList.add(model)
-                }
-            }
-        }
-        // for (item : JSONObject in datas) {
-        // for (i in 0..(datas.length() - 1)) {
-        //    val item = datas.getJSONObject(i)
-
-        // Your code here
-        // }
-        /*
-        if (datas is Array) {
-            Log.d("datas", "is array")
-         }
-        */
-
-        /*
-       while (keys.hasNext()) {
-           val key = keys.next()
-           val value = json.get(key)
-            Log.d("key", key)
-           Log.d("value", value.toString())
-       }
-       */
-
-        return friendList.toList()
     }
 }
 
