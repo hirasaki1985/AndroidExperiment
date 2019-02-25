@@ -13,7 +13,7 @@ import com.example.hirasaki.androidexperiment.R
 import com.example.hirasaki.androidexperiment.friends.data.FriendModel
 import com.example.hirasaki.androidexperiment.friends.utils.FriendPresenter
 import com.example.hirasaki.androidexperiment.friends.utils.FriendValidator
-import com.example.hirasaki.androidexperiment.util.FriendsConverter
+import com.example.hirasaki.androidexperiment.friends.utils.FriendsConverter
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async

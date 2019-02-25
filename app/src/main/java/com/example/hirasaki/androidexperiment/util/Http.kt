@@ -1,12 +1,16 @@
 package com.example.hirasaki.androidexperiment.util
 
+import android.graphics.Bitmap
 import android.util.Log
 import okhttp3.*
-import java.io.BufferedInputStream
-import java.io.InputStream
 import java.net.URL
 import javax.net.ssl.HttpsURLConnection
 import org.json.JSONObject
+import android.graphics.BitmapFactory
+import com.squareup.picasso.Picasso
+import com.squareup.picasso.RequestCreator
+import java.io.*
+
 
 class Http {
     private val bodyType_json = "application/json; charset=utf-8"
@@ -73,6 +77,40 @@ class Http {
         */
         return response.body()?.string()
     }
+
+    fun getImage(url:String): RequestCreator? {
+        return Picasso.get().load(url)
+    }
+
+    /*
+    fun getImage(url: String): Bitmap {
+        var bitmap: Bitmap? = null
+        var `in`: InputStream? = null
+        var out: BufferedOutputStream? = null
+
+        try {
+            `in` = BufferedInputStream(URL(url).openStream(), IO_BUFFER_SIZE)
+
+            val dataStream = ByteArrayOutputStream()
+            out = BufferedOutputStream(dataStream, IO_BUFFER_SIZE)
+            copy(`in`, out)
+            out!!.flush()
+
+            val data = dataStream.toByteArray()
+            val options = BitmapFactory.Options()
+            //options.inSampleSize = 1;
+
+            bitmap = BitmapFactory.decodeByteArray(data, 0, data.size, options)
+        } catch (e: IOException) {
+            Log.e("Http getImage()", "Could not load Bitmap from: $url")
+        } finally {
+            closeStream(`in`)
+            closeStream(out)
+        }
+
+        return bitmap
+    }
+    */
 
     private fun convertJsonToParams(json: JSONObject): String {
         Log.d("httpGET1 convertJsonToParams()", "start")

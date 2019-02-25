@@ -67,6 +67,8 @@ dependencies {
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version" //kotlinコルーチン用ライブラリ(async, await)
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version" //kotlinコルーチン用ライブラリ(async, await)
     // implementation "org.jetbrains.anko:anko-commons:0.10.1"
+
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }
 
 kotlin {

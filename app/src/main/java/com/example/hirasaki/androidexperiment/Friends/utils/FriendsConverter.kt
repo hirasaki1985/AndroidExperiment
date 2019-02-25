@@ -1,7 +1,8 @@
-package com.example.hirasaki.androidexperiment.util
+package com.example.hirasaki.androidexperiment.friends.utils
 
 import android.util.Log
 import com.example.hirasaki.androidexperiment.friends.data.FriendModel
+import com.example.hirasaki.androidexperiment.friends.friendinput.FriendsInputFragment
 import org.json.JSONArray
 import org.json.JSONObject
 import java.text.SimpleDateFormat
@@ -18,30 +19,6 @@ class FriendsConverter() {
             Date(birthday),
             profile
         )
-    }
-
-    fun ConvertJsonToFriendModel(json: JSONObject): FriendModel {
-        return FriendModel(
-            json.getInt("id"),
-            json.get("name").toString(),
-            json.get("sex").toString().toBoolean(),
-            Date(json.get("birthday").toString()),
-            json.get("profile").toString()
-        )
-    }
-
-    fun ConvertFriendModelToObject(model: FriendModel): JSONObject {
-        val params = JSONObject()
-        params.put("name", model.name)
-        if (model.sex) {
-            params.put("sex", 1)
-        } else {
-            params.put("sex", 0)
-        }
-        params.put("birthday", df.format(model.birthday))
-        params.put("profile", model.profile)
-
-        return params
     }
 
     fun ConvertJsonToFriendModelList(json: JSONObject): List<FriendModel> {
@@ -61,7 +38,8 @@ class FriendsConverter() {
                 val item = datas[i]
 
                 if (item is JSONObject) {
-                    val model = ConvertJsonToFriendModel(item)
+                    val model = FriendModel()
+                    model.convert(item)
                     friendList.add(model)
                 }
             }

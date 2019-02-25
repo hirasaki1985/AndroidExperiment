@@ -9,20 +9,24 @@ import kotlinx.coroutines.*
 import org.json.JSONObject
 
 class FriendsRemoteDataSource(): BaseRemoteDataSource() {
+    private val moduleName = "friends"
+    private val actionList = "list"
+    private val actionCreate = "create"
+
     fun getFriendList(arg: JSONObject): JSONObject {
         val params = JSONObject()
         val http = Http()
         var result: String? =  null
 
-        params.put("module", "friends")
-        params.put("action", "list")
+        params.put("module", moduleName)
+        params.put("action", actionList)
         params.put("key", getApiKey())
 
         result = http.get(
             getEndpoint(),
             params
         )
-        Log.d("FriendsListFragment onParallelGetButtonClick()", result.toString())
+        Log.d("FriendsRemoteDataSource getFriendList()", result.toString())
         return JSONObject(result.toString())
     }
 
@@ -51,8 +55,8 @@ class FriendsRemoteDataSource(): BaseRemoteDataSource() {
         val http = Http()
         var result: String? =  null
 
-        params.put("module", "friends")
-        params.put("action", "create")
+        params.put("module", moduleName)
+        params.put("action", actionCreate)
         params.put("key", getApiKey())
         params.put("data", data)
 
@@ -60,7 +64,7 @@ class FriendsRemoteDataSource(): BaseRemoteDataSource() {
             getEndpoint(),
             params
         )
-        Log.d("FriendsListFragment onParallelGetButtonClick()", result.toString())
+        Log.d("FriendsRemoteDataSource createFriend()", result.toString())
         return JSONObject(result.toString())
     }
 
