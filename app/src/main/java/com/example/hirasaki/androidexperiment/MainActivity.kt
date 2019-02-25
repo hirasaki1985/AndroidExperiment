@@ -18,14 +18,14 @@ class MainActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.nav_home -> {
                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.frameLayout, HomeFragment())
+                    .replace(R.id.mainFrameLayout, HomeFragment())
                     .commit()
                 return@OnNavigationItemSelectedListener true
             }
             R.id.nav_friends -> {
                 supportFragmentManager.beginTransaction()
                     .replace(
-                        R.id.frameLayout,
+                        R.id.mainFrameLayout,
                         FriendsListFragment()
                     )
                     .commit()
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
             }
             R.id.nav_profile -> {
                 supportFragmentManager.beginTransaction()
-                    .replace(R.id.frameLayout, ProfileFragment())
+                    .replace(R.id.mainFrameLayout, ProfileFragment())
                     .commit()
                 return@OnNavigationItemSelectedListener true
             }
@@ -54,7 +54,7 @@ class MainActivity : AppCompatActivity() {
 
         // Initial display
         supportFragmentManager.beginTransaction()
-            .replace(R.id.frameLayout, HomeFragment())
+            .replace(R.id.mainFrameLayout, HomeFragment())
             .commit()
     }
 

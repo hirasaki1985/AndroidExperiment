@@ -16,4 +16,7 @@
     <string name="friend_input_button_label">追加</string>
     <string name="friend_input_birthday">誕生日を選択する</string>
     <string name="friend_list_birtyday_view">yyyy-mm-dd</string>
+    <string name="profile_main_nav_title_profile">Profile</string>
+    <string name="profile_main_nav_title_reference">Reference</string>
+    <string name="profile_main_nav_title_feed">Feed</string>
 </resources>

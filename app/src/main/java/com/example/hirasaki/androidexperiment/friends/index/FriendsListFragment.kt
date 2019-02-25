@@ -56,7 +56,7 @@ class FriendsListFragment : Fragment()  {
                 fragmentTransaction.addToBackStack(null)
 
                 // replace display
-                fragmentTransaction.replace(R.id.frameLayout, fragment)
+                fragmentTransaction.replace(R.id.mainFrameLayout, fragment)
                 fragmentTransaction.commit()
             }
         }
@@ -93,7 +93,7 @@ class FriendsListFragment : Fragment()  {
                         fragmentTransaction.addToBackStack(null)
 
                         // replace display
-                        fragmentTransaction.replace(R.id.frameLayout, fragment)
+                        fragmentTransaction.replace(R.id.mainFrameLayout, fragment)
                         fragmentTransaction.commit()
                     }
 
