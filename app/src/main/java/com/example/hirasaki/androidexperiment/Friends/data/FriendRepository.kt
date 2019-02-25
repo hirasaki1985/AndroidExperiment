@@ -18,7 +18,12 @@ class FriendRepository: BaseRepository() {
     fun getFriendList(arg: JSONObject): List<FriendModel> {
         val result = friendRemoteDataSource.getFriendList(arg)
         Log.d("FriendsListFragment onParallelGetButtonClick()", result.toString())
-        return converter.ConverJsonToFriendModelList(result)
+        return converter.ConvertJsonToFriendModelList(result)
+    }
+
+    fun createFriend(friend: FriendModel): Int {
+        val result =  friendRemoteDataSource.createFriend(converter.ConvertFriendModelToObject(friend))
+        return result.get("data").toString().toInt()
     }
 
     // val tasksLocalDataSource: TasksDataSource

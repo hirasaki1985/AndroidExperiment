@@ -34,27 +34,8 @@ class FriendPresenter: BasePresenter() {
     }
 
     // fun onParallelGetButtonClick() = GlobalScope.launch(Dispatchers.Main) {
-    fun create(model: FriendModel) = GlobalScope.launch(Dispatchers.Main) {
-        val http = Http()
-        //Mainスレッドでネットワーク関連処理を実行するとエラーになるためBackgroundで実行
-        async(Dispatchers.Default) {
-            val params = JSONObject()
-            params.put("module", "friends")
-            params.put("action", "list")
-            params.put("key", "tGendC3d2CMEOvsiH6UVstknFc31RM")
-
-            http.httpGET1(
-                "https://script.google.com/macros/s/AKfycbzLNFOuKp4DLbrfN0zlNAV0EyvnC1F_XZQGrVu-u7-fgIhUZ3x1/exec",
-                params
-            ) }.await().let {
-
-            //minimal-jsonを使って　jsonをパース
-            val result = Json.parse(it).asObject()
-            Log.d("FriendsListFragment onParallelGetButtonClick()", result.toString())
-
-            // val textView = findViewById(R.id.text) as TextView
-            // textView.setText(result.get("description").asObject().get("text").asString())
-        }
+    fun create(model: FriendModel): Int {
+        return friendRepository.createFriend(model)
     }
 
     public fun update(target: Int, model: FriendModel): Boolean {

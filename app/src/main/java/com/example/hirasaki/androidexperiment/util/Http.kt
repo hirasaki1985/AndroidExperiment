@@ -9,17 +9,19 @@ import javax.net.ssl.HttpsURLConnection
 import org.json.JSONObject
 
 class Http {
+    private val bodyType_json = "application/json; charset=utf-8"
+
     //叩きたいREST APIのURLを引数とします
-    fun httpGET1(url : String, params: JSONObject): String? {
-        Log.d("httpGET1", "start")
-        Log.d("httpGET1 url = ", url)
-        Log.d("httpGET1 params = ", params.toString())
+    fun get(url: String, params: JSONObject): String? {
+        Log.d("Http.get()", "start")
+        Log.d("Http.get() url = ", url)
+        Log.d("Http.get() params = ", params.toString())
 
         // params
         // val postBody = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), params.toString())
         val uri = convertJsonToParams(params)
         val request_url = url + '?' + uri
-        Log.d("httpGET1 request_url", request_url)
+        Log.d("Http.get() request_url", request_url)
 
         // create client instance
         val client = OkHttpClient()
@@ -27,6 +29,37 @@ class Http {
         // create request
         // val request: Request = Request.Builder().url(request_url).get(postBody).build()
         val request: Request = Request.Builder().url(request_url).get().build()
+
+        // execute
+        val response = client.newCall(request).execute()
+        /*
+        val request = Request.Builder()
+            // .header("Authorization", "your token")
+            .url(url)
+            .build()
+
+        val response = client.newCall(request).execute()
+        */
+        return response.body()?.string()
+    }
+
+    fun post(url: String, params: JSONObject, type:String = "json"): String? {
+        Log.d("Http.post()", "start")
+        Log.d("Http.post() url = ", url)
+        Log.d("Http.post() params = ", params.toString())
+
+        // type
+        val mediaType = MediaType.parse(bodyType_json)
+
+        // params
+        val postBody = RequestBody.create(mediaType, params.toString())
+
+        // create client instance
+        val client = OkHttpClient()
+
+        // create request
+        // val request: Request = Request.Builder().url(request_url).get(postBody).build()
+        val request: Request = Request.Builder().url(url).post(postBody).build()
 
         // execute
         val response = client.newCall(request).execute()

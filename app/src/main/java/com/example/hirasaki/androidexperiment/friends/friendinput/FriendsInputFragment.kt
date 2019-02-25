@@ -13,6 +13,11 @@ import com.example.hirasaki.androidexperiment.R
 import com.example.hirasaki.androidexperiment.friends.data.FriendModel
 import com.example.hirasaki.androidexperiment.friends.utils.FriendPresenter
 import com.example.hirasaki.androidexperiment.friends.utils.FriendValidator
+import com.example.hirasaki.androidexperiment.util.FriendsConverter
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
 // import com.example.hirasaki.androidexperiment.util.DatePickerFragmentDialog
 import java.util.*
 
@@ -20,6 +25,7 @@ class FriendsInputFragment: Fragment() {
     private var mContext: Context? = null
     private val presenter: FriendPresenter = FriendPresenter()
     private val validator: FriendValidator = FriendValidator()
+    private val converter = FriendsConverter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // set Context.
@@ -53,6 +59,14 @@ class FriendsInputFragment: Fragment() {
             val selected_sex = sex.getCheckedRadioButtonId()
 
             // create model
+            val friendModel = converter.ConvertStringsToModel(
+                id.toString(),
+                name.text.toString(),
+                selected_sex.toString(),
+                cal.getTime().toString(),
+                profile.text.toString()
+            )
+            /*
             val friendModel = FriendModel(
                 id,
                 name.text.toString(),
@@ -60,6 +74,7 @@ class FriendsInputFragment: Fragment() {
                 cal.getTime(),
                 profile.text.toString()
             )
+            */
 
             // validate
             val validate_result = validator.validate(friendModel)
@@ -82,7 +97,7 @@ class FriendsInputFragment: Fragment() {
 
             // add
             Log.d("FriendsInputFragment", "error is nothing.")
-
+            onCreateFriend(friendModel)
         }
 
         val dateSetListener = object : DatePickerDialog.OnDateSetListener {
@@ -110,6 +125,16 @@ class FriendsInputFragment: Fragment() {
             // val newFragment = DatePickerFragmentDialog()
             // newFragment.show(getFragmentManager(), "datePicker")
         })
+    }
+
+    fun onCreateFriend(model: FriendModel) = GlobalScope.launch(Dispatchers.Main) {
+        Log.d("FriendsListFragment onCreateFriend()", "start")
+        async(Dispatchers.Default) {
+            presenter.create(model)
+        }.await().let {
+            // load FriendList
+            // reloadFriendList(it)
+        }
     }
 }
 

@@ -63,7 +63,7 @@ class FriendsListFragment : Fragment()  {
 
         reloadFriendList(presenter.getStateFriendList())
 
-        onParallelGetButtonClick()
+        onGetFriendList()
     }
 
     fun reloadFriendList(friendList: List<FriendModel>) {
@@ -113,17 +113,14 @@ class FriendsListFragment : Fragment()  {
         recyclerView.adapter = adapter
     }
 
-    //非同期処理でHTTP GETを実行します。
-    fun onParallelGetButtonClick() = GlobalScope.launch(Dispatchers.Main) {
-        Log.d("FriendsListFragment onParallelGetButtonClick()", "start")
-        //Mainスレッドでネットワーク関連処理を実行するとエラーになるためBackgroundで実行
+    fun onGetFriendList() = GlobalScope.launch(Dispatchers.Main) {
+        Log.d("FriendsListFragment onGetFriendList()", "start")
         async(Dispatchers.Default) {
 
             // get FriendList
             val params = JSONObject()
             presenter.getFriendList(params)
         }.await().let {
-            // load FriendList
             reloadFriendList(it)
         }
     }

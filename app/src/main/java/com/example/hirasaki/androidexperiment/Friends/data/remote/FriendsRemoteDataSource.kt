@@ -18,7 +18,7 @@ class FriendsRemoteDataSource(): BaseRemoteDataSource() {
         params.put("action", "list")
         params.put("key", getApiKey())
 
-        result = http.httpGET1(
+        result = http.get(
             getEndpoint(),
             params
         )
@@ -46,11 +46,22 @@ class FriendsRemoteDataSource(): BaseRemoteDataSource() {
     }
      */
 
-    fun getFriend() {
-    }
+    fun createFriend(data: JSONObject): JSONObject {
+        val params = JSONObject()
+        val http = Http()
+        var result: String? =  null
 
-    fun createFriend() {
+        params.put("module", "friends")
+        params.put("action", "create")
+        params.put("key", getApiKey())
+        params.put("data", data)
 
+        result = http.post(
+            getEndpoint(),
+            params
+        )
+        Log.d("FriendsListFragment onParallelGetButtonClick()", result.toString())
+        return JSONObject(result.toString())
     }
 
     fun updateFriend() {
