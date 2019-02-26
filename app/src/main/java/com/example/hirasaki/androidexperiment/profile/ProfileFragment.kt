@@ -14,6 +14,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import android.support.v4.app.FragmentManager
 import android.util.Log
 import android.widget.ImageView
+import android.widget.TextView
 import com.example.hirasaki.androidexperiment.R
 import com.example.hirasaki.androidexperiment.profile.data.ProfileModel
 import com.example.hirasaki.androidexperiment.profile.feed.ProfileFeedIndexFragment
@@ -92,11 +93,17 @@ class ProfileFragment : Fragment() {
 
     fun reload(model: ProfileModel) {
         Log.d("ProfileFragment reload()", model.toString())
+        val tableId = myView.findViewById<TextView>(R.id.profile_table_id)
+        val tableName = myView.findViewById<TextView>(R.id.profile_table_name)
         val imageView = myView.findViewById<ImageView>(R.id.profile_user_image)
+
+        // update view
         val image = presenter.getProfileImage(model)
         if (image != null) {
             Log.d("image", "not null.")
             image.into(imageView)
         }
+        tableId.text = model.id.toString()
+        tableName.text = model.name
     }
 }
