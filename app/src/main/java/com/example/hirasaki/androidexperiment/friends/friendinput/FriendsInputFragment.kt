@@ -10,7 +10,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.example.hirasaki.androidexperiment.R
+import com.example.hirasaki.androidexperiment.friends.data.FriendDetail.FriendsDetailFragment
 import com.example.hirasaki.androidexperiment.friends.data.FriendModel
+import com.example.hirasaki.androidexperiment.friends.index.FriendsListFragment
 import com.example.hirasaki.androidexperiment.friends.utils.FriendPresenter
 import com.example.hirasaki.androidexperiment.friends.utils.FriendValidator
 import com.example.hirasaki.androidexperiment.friends.utils.FriendsConverter
@@ -99,6 +101,20 @@ class FriendsInputFragment(): Fragment() {
             // add
             Log.d("FriendsInputFragment", "error is nothing.")
             onCreateFriend(friendModel)
+
+            // transition display
+            val fragment = FriendsListFragment()
+            val fragmentManager = getFragmentManager()
+
+            if (fragmentManager != null) {
+                val fragmentTransaction = fragmentManager.beginTransaction()
+                // setting BackStack
+                fragmentTransaction.addToBackStack(null)
+
+                // replace display
+                fragmentTransaction.replace(R.id.mainFrameLayout, fragment)
+                fragmentTransaction.commit()
+            }
         }
 
         val dateSetListener = object : DatePickerDialog.OnDateSetListener {
