@@ -10,14 +10,15 @@ import com.example.hirasaki.androidexperiment.R
 import com.example.hirasaki.androidexperiment.friends.utils.FriendPresenter
 import com.example.hirasaki.androidexperiment.friends.utils.FriendValidator
 
-class TemplateFragment: Fragment() {
+class TemplateFragment(): Fragment() {
     private var mContext: Context? = null
-    private var presenter: FriendPresenter = FriendPresenter()
+    private lateinit var presenter: FriendPresenter
     private val validator: FriendValidator = FriendValidator()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // set Context.
         mContext = inflater.getContext()
+        presenter = FriendPresenter(mContext!!)
         return inflater.inflate(R.layout.fragment_friends, container, false)
     }
 

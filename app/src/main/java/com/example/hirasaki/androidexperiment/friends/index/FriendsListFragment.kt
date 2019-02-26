@@ -27,12 +27,13 @@ import java.sql.Array
 
 class FriendsListFragment : Fragment()  {
     private var mContext: Context? = null
-    private var presenter: FriendPresenter = FriendPresenter()
+    private lateinit var presenter: FriendPresenter
     private lateinit var myView: View
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // set Context.
         mContext = inflater.getContext()
+        presenter = FriendPresenter(mContext!!)
         return inflater.inflate(R.layout.fragment_friends, container, false)
     }
 

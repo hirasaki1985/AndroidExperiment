@@ -69,6 +69,8 @@ dependencies {
     // implementation "org.jetbrains.anko:anko-commons:0.10.1"
 
     implementation 'com.squareup.picasso:picasso:2.71828'
+    debugImplementation 'com.idescout.sql:sqlscout-server:4.1'
+    releaseImplementation 'com.idescout.sql:sqlscout-server-noop:4.1'
 }
 
 kotlin {

@@ -21,15 +21,16 @@ import kotlinx.coroutines.launch
 // import com.example.hirasaki.androidexperiment.util.DatePickerFragmentDialog
 import java.util.*
 
-class FriendsInputFragment: Fragment() {
+class FriendsInputFragment(): Fragment() {
     private var mContext: Context? = null
-    private val presenter: FriendPresenter = FriendPresenter()
+    private lateinit var presenter: FriendPresenter
     private val validator: FriendValidator = FriendValidator()
     private val converter = FriendsConverter()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // set Context.
         mContext = inflater.getContext()
+        presenter = FriendPresenter(mContext!!)
         return inflater.inflate(R.layout.friends_friendinput, container, false)
     }
 

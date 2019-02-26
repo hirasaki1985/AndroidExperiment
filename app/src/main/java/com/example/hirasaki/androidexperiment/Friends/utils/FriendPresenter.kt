@@ -1,5 +1,6 @@
 package com.example.hirasaki.androidexperiment.friends.utils
 
+import android.content.Context
 import android.util.Log
 import com.eclipsesource.json.Json
 import com.example.hirasaki.androidexperiment.bases.BasePresenter
@@ -11,8 +12,8 @@ import org.json.JSONArray
 import org.json.JSONObject
 import java.util.*
 
-class FriendPresenter: BasePresenter() {
-    private val repository: FriendRepository = FriendRepository()
+class FriendPresenter(context: Context): BasePresenter() {
+    private val repository: FriendRepository = FriendRepository(context)
 
     /**
      * Create the data that display in the recycle view.
@@ -23,7 +24,11 @@ class FriendPresenter: BasePresenter() {
     }
 
     fun getFriendList(arg: JSONObject): List<FriendModel> {
-        return repository.getFriendList(arg)
+        val remote = true
+
+        val friendList = repository.getRemoteFriendList(arg)
+        val result = repository.insertLocalFriendList(friendList)
+        return friendList
     }
 
     // fun onParallelGetButtonClick() = GlobalScope.launch(Dispatchers.Main) {

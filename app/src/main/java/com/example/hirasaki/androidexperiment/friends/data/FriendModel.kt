@@ -27,6 +27,7 @@ class FriendModel(_id: Int = 0, _name: String = "", _sex: Boolean = true, _birth
 
     override fun toObject(): JSONObject {
         val obj = JSONObject()
+        obj.put("id", id)
         obj.put("name", name)
         if (sex) {
             obj.put("sex", 1)
