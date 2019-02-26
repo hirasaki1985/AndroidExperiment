@@ -30,4 +30,23 @@ open class BaseSQLLiteParent(context: Context) {
         Log.d("BaseSQLLiteParent values", values.toString())
         return writable_db.insert(table_name, null, values)
     }
+
+    open public fun deleteAll(table_name: String): Int {
+        Log.d("BaseSQLLiteParent deleteAl()", table_name)
+        return writable_db.delete(table_name, "", arrayOf())
+    }
+
+    open public fun merge(table_name: String, params: List<JSONObject>): Int {
+        Log.d("BaseSQLLiteParent merge()", table_name)
+        val rel_result = deleteAll(table_name)
+        Log.d("rel_result", rel_result.toString())
+
+        var count = 0
+        for (i in params) {
+            insert(table_name, i)
+            count++
+        }
+
+        return count
+    }
 }

@@ -2,7 +2,6 @@ package com.example.hirasaki.androidexperiment.friends.utils
 
 import android.util.Log
 import com.example.hirasaki.androidexperiment.friends.data.FriendModel
-import com.example.hirasaki.androidexperiment.friends.friendinput.FriendsInputFragment
 import org.json.JSONArray
 import org.json.JSONObject
 import java.text.SimpleDateFormat
@@ -46,5 +45,14 @@ class FriendsConverter() {
         }
 
         return friendList.toList()
+    }
+
+    fun ConvertModelToJsonList(models: List<FriendModel>): List<JSONObject> {
+        var objList = mutableListOf<JSONObject>()
+
+        for (model in models) {
+            objList.add(model.toObject())
+        }
+        return objList.toList()
     }
 }

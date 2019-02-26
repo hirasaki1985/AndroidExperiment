@@ -40,6 +40,7 @@ class FriendRepository(context: Context): BaseRepository() {
 
     fun insertLocalFriendList(friendList: List<FriendModel>): Int {
         Log.d("FriendRepository insertLocalFriendList()", "start")
+        /*
         var count = 0
 
         for (model in friendList) {
@@ -49,6 +50,11 @@ class FriendRepository(context: Context): BaseRepository() {
         }
 
         return count
+        */
+        if (friendLocalSQLLiteDataSource != null) {
+            return friendLocalSQLLiteDataSource!!.merge(converter.ConvertModelToJsonList(friendList))
+        }
+        return -1
     }
 
     fun insertFriendList(friend: FriendModel): Long {
