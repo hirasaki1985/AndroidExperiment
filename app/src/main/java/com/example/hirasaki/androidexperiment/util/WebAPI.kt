@@ -1,4 +1,4 @@
-package com.example.hirasaki.androidexperiment.configs
+package com.example.hirasaki.androidexperiment.util
 
 import com.example.hirasaki.androidexperiment.BuildConfig
 

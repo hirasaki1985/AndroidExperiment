@@ -2,9 +2,9 @@ package com.example.hirasaki.androidexperiment.migration
 
 import android.database.sqlite.SQLiteDatabase
 import android.util.Log
-import com.example.hirasaki.androidexperiment.bases.SQLLiteVer
+import com.example.hirasaki.androidexperiment.bases.SQLLiteVersionManagerInterface
 
-class SQLLiteVer03_UpdateFriends: SQLLiteVer {
+class SQLLiteVer03_UpdateFriends: SQLLiteVersionManagerInterface {
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         Log.d("SQLLiteVer03_UpdateFriends onUpgrade()", "migrate start")
         db?.execSQL("delete from friends")

@@ -2,9 +2,9 @@ package com.example.hirasaki.androidexperiment.migration
 
 import android.database.sqlite.SQLiteDatabase
 import android.util.Log
-import com.example.hirasaki.androidexperiment.bases.SQLLiteVer
+import com.example.hirasaki.androidexperiment.bases.SQLLiteVersionManagerInterface
 
-class SQLLiteVer02_Profile() : SQLLiteVer {
+class SQLLiteVer02_Profile() : SQLLiteVersionManagerInterface {
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         Log.d("SQLLiteVer02_Profile onUpgrade()", "migrate start")
         // create profile table

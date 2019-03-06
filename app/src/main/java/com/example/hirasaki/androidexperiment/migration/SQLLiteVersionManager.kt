@@ -4,14 +4,14 @@ import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
-import com.example.hirasaki.androidexperiment.bases.SQLLiteVer
+import com.example.hirasaki.androidexperiment.bases.SQLLiteVersionManagerInterface
 
 private const val DB_NAME = "SampleDatabase"
 private const val DB_VERSION = 3
 
 class SQLLiteManager(context: Context) : SQLiteOpenHelper(context, DB_NAME, null, DB_VERSION) {
-    val ver02: SQLLiteVer = SQLLiteVer02_Profile()
-    val ver03: SQLLiteVer = SQLLiteVer03_UpdateFriends()
+    val ver02: SQLLiteVersionManagerInterface = SQLLiteVer02_Profile()
+    val ver03: SQLLiteVersionManagerInterface = SQLLiteVer03_UpdateFriends()
 
     override fun onCreate(db: SQLiteDatabase?) {
         Log.d("SQLLiteManager onCreate()", "start")

@@ -1,6 +1,6 @@
 package com.example.hirasaki.androidexperiment.bases.data.remote
 
-import com.example.hirasaki.androidexperiment.configs.WebAPI
+import com.example.hirasaki.androidexperiment.util.WebAPI
 
 open class BaseRemoteDataSource() {
     private val webAPI = WebAPI()
