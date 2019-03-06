@@ -13,11 +13,7 @@ public interface FriendContract {
      * PresenterがViewを操作する時に利用する
      */
     interface View {
-        fun getFullRepositoryName(): String;
-
         fun showFriendList(response: List<FriendModel>);
-
-        fun startBrowser(url: String);
 
         fun showError(message: String);
     }
@@ -28,7 +24,5 @@ public interface FriendContract {
      */
     interface UserActions {
         fun fetchFriendList(): Job;
-
-        fun prepare();
     }
 }

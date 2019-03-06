@@ -27,10 +27,6 @@ class FriendPresenter(context: Context, parentView: FriendContract.View): BasePr
         }
     }
 
-    override fun prepare() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
     /**
      * Create the data that display in the recycle view.
      */

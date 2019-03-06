@@ -113,16 +113,8 @@ class FriendsListFragment : Fragment(), FriendContract.View  {
         recyclerView.adapter = adapter
     }
 
-    override fun getFullRepositoryName(): String {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
     override fun showFriendList(response: List<FriendModel>) {
         reloadFriendList(response)
-    }
-
-    override fun startBrowser(url: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     override fun showError(message: String) {
