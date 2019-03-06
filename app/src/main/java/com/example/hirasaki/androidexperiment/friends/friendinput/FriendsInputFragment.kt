@@ -13,10 +13,7 @@ import com.example.hirasaki.androidexperiment.R
 import com.example.hirasaki.androidexperiment.friends.data.FriendDetail.FriendsDetailFragment
 import com.example.hirasaki.androidexperiment.friends.data.FriendModel
 import com.example.hirasaki.androidexperiment.friends.index.FriendsListFragment
-import com.example.hirasaki.androidexperiment.friends.utils.FriendContract
-import com.example.hirasaki.androidexperiment.friends.utils.FriendPresenter
-import com.example.hirasaki.androidexperiment.friends.utils.FriendValidator
-import com.example.hirasaki.androidexperiment.friends.utils.FriendsConverter
+import com.example.hirasaki.androidexperiment.friends.utils.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.async
@@ -24,7 +21,7 @@ import kotlinx.coroutines.launch
 // import com.example.hirasaki.androidexperiment.util.DatePickerFragmentDialog
 import java.util.*
 
-class FriendsInputFragment(): Fragment(), FriendContract.View  {
+class FriendsInputFragment(): FriendFragment()  {
     private var mContext: Context? = null
     private lateinit var presenter: FriendPresenter
     private val validator: FriendValidator = FriendValidator()
@@ -101,21 +98,8 @@ class FriendsInputFragment(): Fragment(), FriendContract.View  {
 
             // add
             Log.d("FriendsInputFragment", "error is nothing.")
-            onCreateFriend(friendModel)
-
-            // transition display
-            val fragment = FriendsListFragment()
-            val fragmentManager = getFragmentManager()
-
-            if (fragmentManager != null) {
-                val fragmentTransaction = fragmentManager.beginTransaction()
-                // setting BackStack
-                fragmentTransaction.addToBackStack(null)
-
-                // replace display
-                fragmentTransaction.replace(R.id.mainFrameLayout, fragment)
-                fragmentTransaction.commit()
-            }
+            // onCreateFriend(friendModel)
+            presenter.create(friendModel)
         }
 
         val dateSetListener = object : DatePickerDialog.OnDateSetListener {
@@ -145,6 +129,7 @@ class FriendsInputFragment(): Fragment(), FriendContract.View  {
         })
     }
 
+    /*
     fun onCreateFriend(model: FriendModel) = GlobalScope.launch(Dispatchers.Main) {
         Log.d("FriendsListFragment onCreateFriend()", "start")
         async(Dispatchers.Default) {
@@ -154,13 +139,25 @@ class FriendsInputFragment(): Fragment(), FriendContract.View  {
             // reloadFriendList(it)
         }
     }
+    */
 
-    override fun showFriendList(response: List<FriendModel>) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
+    override fun showCreateResult(response: FriendModel) {
+        // Toast.makeText(mContext, response.id, Toast.LENGTH_SHORT).show()
 
-    override fun showError(message: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        // transition display
+        Log.d("FriendsInputFragment showCreateResult()", "start")
+        val fragment = FriendsListFragment()
+        val fragmentManager = getFragmentManager()
+
+        if (fragmentManager != null) {
+            val fragmentTransaction = fragmentManager.beginTransaction()
+            // setting BackStack
+            fragmentTransaction.addToBackStack(null)
+
+            // replace display
+            fragmentTransaction.replace(R.id.mainFrameLayout, fragment)
+            fragmentTransaction.commit()
+        }
     }
 }
 

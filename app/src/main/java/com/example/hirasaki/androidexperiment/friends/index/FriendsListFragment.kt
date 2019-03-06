@@ -19,13 +19,14 @@ import com.example.hirasaki.androidexperiment.friends.data.FriendDetail.FriendsD
 import com.example.hirasaki.androidexperiment.friends.data.FriendModel
 import com.example.hirasaki.androidexperiment.friends.friendinput.FriendsInputFragment
 import com.example.hirasaki.androidexperiment.friends.utils.FriendContract
+import com.example.hirasaki.androidexperiment.friends.utils.FriendFragment
 import com.example.hirasaki.androidexperiment.friends.utils.FriendPresenter
 import com.example.hirasaki.androidexperiment.util.Http
 import kotlinx.coroutines.*
 import org.json.JSONArray
 import org.json.JSONObject
 
-class FriendsListFragment : Fragment(), FriendContract.View  {
+class FriendsListFragment : FriendFragment() {
     private var mContext: Context? = null
     private lateinit var presenter: FriendPresenter
     private lateinit var myView: View
@@ -115,10 +116,6 @@ class FriendsListFragment : Fragment(), FriendContract.View  {
 
     override fun showFriendList(response: List<FriendModel>) {
         reloadFriendList(response)
-    }
-
-    override fun showError(message: String) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
     /*

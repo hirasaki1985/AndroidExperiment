@@ -14,6 +14,7 @@ public interface FriendContract {
      */
     interface View {
         fun showFriendList(response: List<FriendModel>);
+        fun showCreateResult(response: FriendModel);
 
         fun showError(message: String);
     }

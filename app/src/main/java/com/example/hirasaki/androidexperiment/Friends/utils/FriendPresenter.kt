@@ -44,7 +44,13 @@ class FriendPresenter(context: Context, parentView: FriendContract.View): BasePr
     }
 
     // fun onParallelGetButtonClick() = GlobalScope.launch(Dispatchers.Main) {
-    fun create(model: FriendModel): Int {
-        return repository.createFriend(model)
+    fun create(model: FriendModel) = GlobalScope.launch(Dispatchers.Main) {
+        Log.d("FriendPresenter create()", "start")
+        async(Dispatchers.Default) {
+            repository.createFriend(model)
+        }.await().let {
+            model.id = it
+            action_view.showCreateResult(model)
+        }
     }
 }
