@@ -49,4 +49,8 @@ open class BaseSQLLiteParent(context: Context) {
 
         return count
     }
+
+    open public fun select(table_name: String, condition: JSONObject, sort: JSONObject, limit: Int, column: Array<String>) {
+
+    }
 }

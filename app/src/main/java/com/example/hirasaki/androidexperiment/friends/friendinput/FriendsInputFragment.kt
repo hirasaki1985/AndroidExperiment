@@ -13,6 +13,7 @@ import com.example.hirasaki.androidexperiment.R
 import com.example.hirasaki.androidexperiment.friends.data.FriendDetail.FriendsDetailFragment
 import com.example.hirasaki.androidexperiment.friends.data.FriendModel
 import com.example.hirasaki.androidexperiment.friends.index.FriendsListFragment
+import com.example.hirasaki.androidexperiment.friends.utils.FriendContract
 import com.example.hirasaki.androidexperiment.friends.utils.FriendPresenter
 import com.example.hirasaki.androidexperiment.friends.utils.FriendValidator
 import com.example.hirasaki.androidexperiment.friends.utils.FriendsConverter
@@ -23,7 +24,7 @@ import kotlinx.coroutines.launch
 // import com.example.hirasaki.androidexperiment.util.DatePickerFragmentDialog
 import java.util.*
 
-class FriendsInputFragment(): Fragment() {
+class FriendsInputFragment(): Fragment(), FriendContract.View  {
     private var mContext: Context? = null
     private lateinit var presenter: FriendPresenter
     private val validator: FriendValidator = FriendValidator()
@@ -32,7 +33,7 @@ class FriendsInputFragment(): Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // set Context.
         mContext = inflater.getContext()
-        presenter = FriendPresenter(mContext!!)
+        presenter = FriendPresenter(mContext!!, this as FriendContract.View)
         return inflater.inflate(R.layout.friends_friendinput, container, false)
     }
 
@@ -152,6 +153,22 @@ class FriendsInputFragment(): Fragment() {
             // load FriendList
             // reloadFriendList(it)
         }
+    }
+
+    override fun getFullRepositoryName(): String {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun showFriendList(response: List<FriendModel>) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun startBrowser(url: String) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun showError(message: String) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
 

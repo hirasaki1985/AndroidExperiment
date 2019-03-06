@@ -2,18 +2,34 @@ package com.example.hirasaki.androidexperiment.friends.utils
 
 import android.content.Context
 import android.util.Log
-import com.eclipsesource.json.Json
 import com.example.hirasaki.androidexperiment.bases.BasePresenter
 import com.example.hirasaki.androidexperiment.friends.data.FriendModel
 import com.example.hirasaki.androidexperiment.friends.data.FriendRepository
-import com.example.hirasaki.androidexperiment.util.Http
 import kotlinx.coroutines.*
-import org.json.JSONArray
 import org.json.JSONObject
-import java.util.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 
-class FriendPresenter(context: Context): BasePresenter() {
+class FriendPresenter(context: Context, parentView: FriendContract.View): BasePresenter(), FriendContract.UserActions {
+    private val action_view: FriendContract.View = parentView;
     private val repository: FriendRepository = FriendRepository(context)
+
+    override fun fetchFriendList() = GlobalScope.launch(Dispatchers.Main) {
+        Log.d("FriendPresenter onGetFriendList()", "start")
+        async(Dispatchers.Default) {
+
+            // get FriendList
+            val params = JSONObject()
+            getFriendList(params)
+        }.await().let {
+            action_view.showFriendList(it)
+        }
+    }
+
+    override fun prepare() {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 
     /**
      * Create the data that display in the recycle view.
@@ -34,13 +50,5 @@ class FriendPresenter(context: Context): BasePresenter() {
     // fun onParallelGetButtonClick() = GlobalScope.launch(Dispatchers.Main) {
     fun create(model: FriendModel): Int {
         return repository.createFriend(model)
-    }
-
-    public fun update(target: Int, model: FriendModel): Boolean {
-        return true
-    }
-
-    public fun delete(target: Int): Boolean {
-        return true
     }
 }
