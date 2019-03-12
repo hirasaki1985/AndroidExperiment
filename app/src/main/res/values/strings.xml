@@ -22,5 +22,9 @@
     <string name="profile_table_id_label">id</string>
     <string name="profile_table_name_label">name</string>
 
-    <string name="facebook_app_id">790831134627498</string> <string name="fb_login_protocol_scheme">fb790831134627498</string>
+    <string name="facebook_app_id">790831134627498</string>
+    <string name="fb_login_protocol_scheme">fb790831134627498</string>
+    <string name="activity_main_go_login_window">ログイン画面へ</string>
+    <string name="activity_main_go_login_top_window">ログイン後画面へ</string>
+    <string name="public_index_login_text">ログイン画面</string>
 </resources>

@@ -1,83 +1,34 @@
 package com.example.hirasaki.androidexperiment
 
+import android.content.Intent
 import android.os.Bundle
-import android.support.design.widget.BottomNavigationView
-import android.support.v7.app.AppCompatActivity
+import android.widget.Button
 import com.example.hirasaki.androidexperiment.bases.activities.BasePublicActivity
-import com.example.hirasaki.androidexperiment.login.friends.data.FriendModel
-import com.example.hirasaki.androidexperiment.login.friends.pages.index.FriendsListFragment
-import com.example.hirasaki.androidexperiment.login.home.HomeFragment
-import com.example.hirasaki.androidexperiment.login.profile.ProfileFragment
-import kotlinx.android.synthetic.main.activity_main.*
-import com.idescout.sql.SqlScoutServer
+import com.example.hirasaki.androidexperiment.member.MemberMainActivity
+import com.example.hirasaki.androidexperiment.publics.PublicMainActivity
 
 class MainActivity : BasePublicActivity() {
-    private var loaderResult: Array<FriendModel>? = null
-    private var sqlScoutServer: SqlScoutServer? = null
-
-    private val mOnNavigationItemSelectedListener = BottomNavigationView.OnNavigationItemSelectedListener { item ->
-        when (item.itemId) {
-            R.id.nav_home -> {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.mainFrameLayout, HomeFragment())
-                    .commit()
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.nav_friends -> {
-                supportFragmentManager.beginTransaction()
-                    .replace(
-                        R.id.mainFrameLayout,
-                        FriendsListFragment()
-                    )
-                    .commit()
-                return@OnNavigationItemSelectedListener true
-            }
-            R.id.nav_profile -> {
-                supportFragmentManager.beginTransaction()
-                    .replace(R.id.mainFrameLayout, ProfileFragment())
-                    .commit()
-                return@OnNavigationItemSelectedListener true
-            }
-        }
-        false
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        sqlScoutServer = SqlScoutServer.create(this, packageName)
-
         setContentView(R.layout.activity_main)
 
-        // call loaderManager
-        // val loader_bundle = Bundle()
-        // loaderManager.initLoader(1, null, this)
-        // loaderManager.initLoader(1, null, this)
+        val loginWindow = findViewById<Button>(R.id.activity_main_go_login_window)
+        val loginTopWindow = findViewById<Button>(R.id.activity_main_go_login_top_window)
 
-        navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener)
+        loginWindow.setOnClickListener {
+            // translate window to login.
+            val intent = Intent(this, PublicMainActivity::class.java)
 
-        // Initial display
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.mainFrameLayout, HomeFragment())
-            .commit()
-    }
+            // intent.putExtra("price", price)
+            // intent.putExtra("discount", discount)
+            // startActivityForResult(intent, 1)
+            startActivity(intent)
+        }
 
-    override fun onResume() {
-        sqlScoutServer!!.resume()
-        super.onResume()
-    }
-
-    override fun onPause() {
-        sqlScoutServer!!.destroy()
-        super.onPause()
-    }
-
-    override fun onStop() {
-        sqlScoutServer!!.destroy()
-        super.onStop()
-    }
-
-    override fun onDestroy() {
-        sqlScoutServer!!.destroy()
-        super.onDestroy()
+        loginTopWindow.setOnClickListener {
+            // translate window to login top.
+            val intent = Intent(this, MemberMainActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
