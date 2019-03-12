@@ -7,9 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.hirasaki.androidexperiment.R
-import com.example.hirasaki.androidexperiment.member.friends.utils.FriendContract
-import com.example.hirasaki.androidexperiment.member.friends.utils.FriendPresenter
-import com.example.hirasaki.androidexperiment.member.friends.utils.FriendValidator
+import com.example.hirasaki.androidexperiment.pages.member.friends.utils.FriendContract
+import com.example.hirasaki.androidexperiment.pages.member.friends.utils.FriendPresenter
+import com.example.hirasaki.androidexperiment.pages.member.friends.utils.FriendValidator
 
 class TemplateFragment(): Fragment() {
     private var mContext: Context? = null
@@ -20,7 +20,7 @@ class TemplateFragment(): Fragment() {
         // set Context.
         mContext = inflater.getContext()
         presenter = FriendPresenter(mContext!!, this as FriendContract.View)
-        return inflater.inflate(R.layout.fragment_friends, container, false)
+        return inflater.inflate(R.layout.member_fragment_friends, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

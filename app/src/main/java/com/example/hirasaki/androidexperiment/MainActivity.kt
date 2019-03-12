@@ -4,8 +4,8 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import com.example.hirasaki.androidexperiment.bases.activities.BasePublicActivity
-import com.example.hirasaki.androidexperiment.member.MemberMainActivity
-import com.example.hirasaki.androidexperiment.publics.PublicMainActivity
+import com.example.hirasaki.androidexperiment.pages.member.MemberMainActivity
+import com.example.hirasaki.androidexperiment.pages.publics.PublicMainActivity
 
 class MainActivity : BasePublicActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
