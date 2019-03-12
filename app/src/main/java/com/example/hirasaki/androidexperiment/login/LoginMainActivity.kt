@@ -1,17 +1,18 @@
-package com.example.hirasaki.androidexperiment
+package com.example.hirasaki.androidexperiment.login
 
 import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
-import com.example.hirasaki.androidexperiment.bases.activities.BasePublicActivity
+import com.example.hirasaki.androidexperiment.R
+import com.example.hirasaki.androidexperiment.bases.activities.BaseLoginActivity
 import com.example.hirasaki.androidexperiment.login.friends.data.FriendModel
 import com.example.hirasaki.androidexperiment.login.friends.pages.index.FriendsListFragment
 import com.example.hirasaki.androidexperiment.login.home.HomeFragment
 import com.example.hirasaki.androidexperiment.login.profile.ProfileFragment
-import kotlinx.android.synthetic.main.activity_main.*
 import com.idescout.sql.SqlScoutServer
+import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : BasePublicActivity() {
+class LoginMainActivity : BaseLoginActivity() {
     private var loaderResult: Array<FriendModel>? = null
     private var sqlScoutServer: SqlScoutServer? = null
 

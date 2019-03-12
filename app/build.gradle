@@ -61,8 +61,11 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 
+    // 通信ライブラリ
     implementation 'com.squareup.okhttp3:okhttp:3.11.0'  //http通信ライブラリ
     implementation 'com.eclipsesource.minimal-json:minimal-json:0.9.5' //jsonパースライブラリ
+
+    // コルーチン
     def coroutines_version = '1.1.1' //kotlinコルーチン用ライブラリ(async, await)のバージョン
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version" //kotlinコルーチン用ライブラリ(async, await)
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version" //kotlinコルーチン用ライブラリ(async, await)
@@ -71,6 +74,9 @@ dependencies {
     implementation 'com.squareup.picasso:picasso:2.71828'
     debugImplementation 'com.idescout.sql:sqlscout-server:4.1'
     releaseImplementation 'com.idescout.sql:sqlscout-server-noop:4.1'
+
+    // facebook
+    implementation 'com.facebook.android:facebook-login:[4,5)'
 }
 
 kotlin {

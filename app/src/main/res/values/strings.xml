@@ -21,4 +21,6 @@
     <string name="profile_main_nav_title_feed">Feed</string>
     <string name="profile_table_id_label">id</string>
     <string name="profile_table_name_label">name</string>
+
+    <string name="facebook_app_id">790831134627498</string> <string name="fb_login_protocol_scheme">fb790831134627498</string>
 </resources>

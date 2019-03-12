@@ -7,9 +7,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.hirasaki.androidexperiment.R
-import com.example.hirasaki.androidexperiment.friends.utils.FriendContract
-import com.example.hirasaki.androidexperiment.friends.utils.FriendPresenter
-import com.example.hirasaki.androidexperiment.friends.utils.FriendValidator
+import com.example.hirasaki.androidexperiment.login.friends.utils.FriendContract
+import com.example.hirasaki.androidexperiment.login.friends.utils.FriendPresenter
+import com.example.hirasaki.androidexperiment.login.friends.utils.FriendValidator
 
 class TemplateFragment(): Fragment() {
     private var mContext: Context? = null
